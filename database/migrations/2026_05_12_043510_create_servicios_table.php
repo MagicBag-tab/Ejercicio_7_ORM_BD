@@ -1,0 +1,16 @@
+public function up(): void
+{
+    Schema::create('servicios', function (Blueprint $table) {
+        $table->id();
+        $table->string('nombre', 120);
+        $table->text('descripcion')->nullable();
+        $table->decimal('costo_base', 10, 2);
+        $table->unsignedSmallInteger('duracion_horas')->default(1);
+        $table->timestamps();
+    });
+}
+
+public function down(): void
+{
+    Schema::dropIfExists('servicios');
+}
