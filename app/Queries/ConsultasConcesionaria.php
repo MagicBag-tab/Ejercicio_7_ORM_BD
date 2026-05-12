@@ -37,11 +37,13 @@ class ConsultasConcesionaria
     public static function carrosConServiciosCompletados()
     {
         return Carro::with(['modelo.marca', 'servicios' => function ($q) {
-                $q->wherePivot('estado', 'completado')
-                  ->orderByPivot('fecha_servicio', 'desc');
+                $q->where('carro_servicio.estado', 'completado')
+                  ->orderBy('carro_servicio.fecha_servicio', 'desc');
             }])
-            ->whereHas('servicios', fn($q) => $q->wherePivot('estado','completado'))
-            ->limit(100)
+            ->whereHas('servicios', function ($q) {
+                $q->where('carro_servicio.estado', 'completado');
+            })
+            ->limit(10)
             ->get();
     }
 

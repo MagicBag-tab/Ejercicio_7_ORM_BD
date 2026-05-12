@@ -15,6 +15,7 @@ Route::get('/clientes-recurrentes', function () {
 });
 
 Route::get('/carros-servicios', function () {
+    set_time_limit(120);
     return response()->json(ConsultasConcesionaria::carrosConServiciosCompletados());
 });
 
