@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Carro extends Model
 {
+    protected $table = 'carros';
     protected $fillable = [
         'modelo_id', 'color_id', 'vin', 'anio',
         'kilometraje', 'precio', 'estado', 'placa'

@@ -11,13 +11,13 @@ class ClienteSeeder extends Seeder
         $faker = Faker::create('es_MX');
         $lote  = [];
 
-        for ($i = 0; $i < 3000; $i++) {
+        for ($i = 1; $i <= 3000; $i++) {
             $lote[] = [
                 'nombre'          => $faker->firstName(),
                 'apellido'        => $faker->lastName(),
-                'dpi'             => $faker->unique()->numerify('################'),
+                'dpi'             => str_pad($i, 16, '0', STR_PAD_LEFT),
                 'telefono'        => $faker->phoneNumber(),
-                'correo'          => $faker->unique()->safeEmail(),
+                'correo'          => 'cliente' . $i . '@ejemplo.com',
                 'direccion'       => $faker->address(),
                 'fecha_nacimiento'=> $faker->dateTimeBetween('-65 years', '-18 years')->format('Y-m-d'),
                 'created_at'      => now(),

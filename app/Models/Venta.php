@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Venta extends Model
 {
+    protected $table = 'ventas';
     protected $fillable = [
         'carro_id', 'cliente_id', 'empleado_id',
         'precio_final', 'descuento', 'fecha_venta', 'metodo_pago'

@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Financiamiento extends Model
 {
+    protected $table = 'financiamientos';
     protected $fillable = [
         'venta_id', 'monto_total', 'cuota_inicial',
         'plazo_meses', 'tasa_interes', 'cuota_mensual', 'estado'

@@ -18,7 +18,7 @@ class CarroSeeder extends Seeder
             $lote[] = [
                 'modelo_id'   => $faker->randomElement($modeloIds),
                 'color_id'    => $faker->randomElement($colorIds),
-                'vin'         => $faker->unique()->regexify('[A-HJ-NPR-Z0-9]{17}'),
+                'vin'         => strtoupper(substr(md5($i . microtime()), 0, 17)),
                 'anio'        => $faker->numberBetween(2015, 2025),
                 'kilometraje' => $faker->numberBetween(0, 180000),
                 'precio'      => $faker->randomFloat(2, 45000, 850000),
