@@ -96,6 +96,33 @@ ConsultasConcesionaria::carrosConServiciosCompletados();
 ConsultasConcesionaria::topMarcasPorVentas();
 ```
 
+### 8. Ejecutar en postman
+
+Importa las siguientes rutas como peticiones GET en Postman:
+
+| Consulta | URL | Descripción |
+|---|---|---|
+| Carros disponibles | `GET http://localhost:8000/carros-disponibles` | Carros en estado disponible desde 2020, ordenados por precio. Usa Eager Loading para evitar N+1. |
+| Ventas del último año | `GET http://localhost:8000/ventas-anio` | Ventas del último año con cliente, empleado y modelo del carro. |
+| Clientes recurrentes | `GET http://localhost:8000/clientes-recurrentes` | Clientes con más de una compra, ordenados por cantidad de ventas. |
+| Carros con servicios | `GET http://localhost:8000/carros-servicios` | Carros que tienen al menos un servicio completado. |
+| Top marcas | `GET http://localhost:8000/top-marcas` | Las 5 marcas con mayor volumen de ventas. |
+
+> **Nota:** El servidor debe estar corriendo con `docker-compose up -d` para que las rutas respondan.
+
+### Ejemplo de respuesta — `/top-marcas`
+
+```json
+[
+  {
+    "id": 1,
+    "nombre": "Toyota",
+    "pais_origen": "Japón",
+    "total_ventas": 120
+  }
+]
+```
+
 ## Comandos útiles
 
 ```bash
